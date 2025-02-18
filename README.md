@@ -1,4 +1,4 @@
-O arquivo README.md fornece uma visão geral do projeto, instruções de instalação e uso. 
+![Captura de tela de 2025-02-18 15-47-35](https://github.com/user-attachments/assets/ebae1057-0fc2-4fe8-9baa-036a1b139257)
 
 # Fórum de Discussão
 Este é um sistema simples de fórum de discussão desenvolvido com Python (Flask) para o backend e HTML/CSS/JavaScript para o frontend. Ele permite que os usuários criem tópicos e adicionem comentários.
