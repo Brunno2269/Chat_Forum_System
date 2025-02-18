@@ -34,4 +34,4 @@ forum/
 
 ## Como Executar
 1. Clone o repositório:
-   git clone https://github.com/seu-usuario/forum-discussao.git
+   git clone https://github.com/Brunno2269/Chat_Forum_System.git
