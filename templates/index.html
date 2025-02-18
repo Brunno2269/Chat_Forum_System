@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fórum de Discussão</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="forum-container">
+        <header class="forum-header">
+            <h1>Fórum de Discussão</h1>
+        </header>
+
+        <main class="forum-content">
+            <!-- Formulário para adicionar tópico -->
+            <section class="add-topic">
+                <h2>Criar Novo Tópico</h2>
+                <form id="topic-form" action="/add_topic" method="POST">
+                    <input type="text" name="title" placeholder="Título do Tópico" required />
+                    <textarea name="content" placeholder="Conteúdo do Tópico" required></textarea>
+                    <button type="submit">Criar Tópico</button>
+                </form>
+            </section>
+
+            <!-- Lista de tópicos -->
+            <section class="topics">
+                <h2>Tópicos</h2>
+                {% if topics %}
+                    <ul>
+                        {% for topic in topics %}
+                            <li class="topic">
+                                <h3>{{ topic.title }}</h3>
+                                <p>{{ topic.content }}</p>
+                                <!-- Comentários -->
+                                <div class="comments">
+                                    <h4>Comentários</h4>
+                                    <ul>
+                                        {% for comment in topic.comments %}
+                                            <li>{{ comment }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    <!-- Formulário para adicionar comentário -->
+                                    <form class="comment-form" action="{{ url_for('forum.add_comment', topic_id=loop.index0) }}" method="POST">
+                                        <input type="text" name="comment" placeholder="Adicionar comentário" required />
+                                        <button type="submit">Enviar</button>
+                                    </form>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>Nenhum tópico disponível.</p>
+                {% endif %}
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
